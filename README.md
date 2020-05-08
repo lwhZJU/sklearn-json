@@ -20,7 +20,7 @@ sklearn-json makes exporting model files to JSON simple.
 ```
 pip install sklearn-json
 ```
-## Example Usage
+## Example Usage 1
 
 ```python
 import sklearn_json as skljson
@@ -31,6 +31,20 @@ model = RandomForestClassifier(n_estimators=10, max_depth=5, random_state=0).fit
 skljson.to_json(model, file_name)
 deserialized_model = skljson.from_json(file_name)
 
+deserialized_model.predict(X)
+```
+
+## Example Usage 2
+
+```python
+import sklearn_json as skljson
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(n_estimators=10, max_depth=5, random_state=0).fit(X, y)
+# serialize_model
+model_json = skljson.serialize_model(model)
+# deserialize_model
+deserialized_model = skljson.deserialize_model(model_json)
 deserialized_model.predict(X)
 ```
 
